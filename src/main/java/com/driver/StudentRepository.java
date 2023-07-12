@@ -26,7 +26,8 @@ public class StudentRepository {
     public void addStudentTeacherPair(String student, String teacher) {
         teacherStudentsMap.putIfAbsent(teacher,new ArrayList<>());
         teacherStudentsMap.get(teacher).add(student);
-        if(teacherMap.containsKey(teacher)) teacherMap.get(teacher).setNumberOfStudents(teacherStudentsMap.get(teacher).size());
+        Teacher teacher1=teacherMap.get(teacher);
+        if(teacher1!=null) teacher1.setNumberOfStudents(1+teacher1.getNumberOfStudents());
     }
 
     public Student getStudentByName(String name) {
